@@ -38,6 +38,42 @@ activities = {
         "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
         "max_participants": 30,
         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+    },
+    "Soccer Team": {
+        "description": "Team training, drills, and weekend matches",
+        "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
+        "max_participants": 22,
+        "participants": ["alex@mergington.edu", "maria@mergington.edu"]
+    },
+    "Basketball Club": {
+        "description": "Learn ball handling, shooting, and game strategy",
+        "schedule": "Wednesdays and Fridays, 3:30 PM - 5:00 PM",
+        "max_participants": 18,
+        "participants": ["noah@mergington.edu", "ava@mergington.edu"]
+    },
+    "Art Studio": {
+        "description": "Explore painting, drawing, and mixed media projects",
+        "schedule": "Mondays, 4:00 PM - 5:30 PM",
+        "max_participants": 15,
+        "participants": ["lily@mergington.edu", "mason@mergington.edu"]
+    },
+    "Drama Workshop": {
+        "description": "Acting exercises, script work, and performance practice",
+        "schedule": "Thursdays, 4:30 PM - 6:00 PM",
+        "max_participants": 16,
+        "participants": ["sophia@mergington.edu", "lucas@mergington.edu"]
+    },
+    "Debate Team": {
+        "description": "Practice public speaking, argument building, and debate rounds",
+        "schedule": "Tuesdays, 5:00 PM - 6:30 PM",
+        "max_participants": 14,
+        "participants": ["ethan@mergington.edu", "mia@mergington.edu"]
+    },
+    "Math Olympiad": {
+        "description": "Solve challenging problems and prepare for math competitions",
+        "schedule": "Wednesdays, 5:00 PM - 6:30 PM",
+        "max_participants": 12,
+        "participants": ["isabella@mergington.edu", "jack@mergington.edu"]
     }
 }
 
@@ -55,9 +91,9 @@ def get_activities():
 @app.post("/activities/{activity_name}/signup")
 def signup_for_activity(activity_name: str, email: str):
     """Sign up a student for an activity"""
-    # Validate activity exists
-    if activity_name not in activities:
-        raise HTTPException(status_code=404, detail="Activity not found")
+# Validate student is not already signed up
+#     if email in activity["participants"]:
+#         raise HTTPException(status_code=400, detail="Student already signed up for this activity")
 
     # Get the specific activity
     activity = activities[activity_name]
